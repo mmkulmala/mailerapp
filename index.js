@@ -1,9 +1,10 @@
 const express = require('express')
-const app = express()
-const port = process.env.PORT || 3000
+require('./services/passport')
 
-app.get('/', (req, res) => {
-    res.send({ hi: 'there' })
-})
+const port = process.env.PORT || 5000
+
+const app = express()
+
+require('./routes/authRoutes')(app)
 
 app.listen(port, () => console.log(`Mailerapp server listening on port ${port}!`))
